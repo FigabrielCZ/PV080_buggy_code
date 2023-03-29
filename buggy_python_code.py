@@ -7,6 +7,8 @@ app = flask.Flask(__name__)
 @app.route("/")
 def index():
     version = flask.request.args.get("urllib_version")
+    if (not version.isdigit()):
+        return
     url = flask.request.args.get("url")
     return fetch_website(version, url)
 
